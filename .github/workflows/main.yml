@@ -1,0 +1,41 @@
+name: 'Deploy Lichtspielzeit'
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./lichtspielzeit-astro
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to IONOS
+        uses: ionos-deploy-now/artifact-action@v1
+        with:
+          api-key: ${{ secrets.IONOS_API_KEY }}
+          service-host: api-eu.ionos.space
+          project-id: d1b19b77-8fa9-488a-a11c-aec59481b730
+          branch-id: ${{ github.ref_name }}
+          version: ${{ github.sha }}
+          folder: ./lichtspielzeit-astro/dist
+          action: upload
