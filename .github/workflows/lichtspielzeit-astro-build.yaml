@@ -1,51 +1,36 @@
-# To better understand this file read this:
-# https://docs.ionos.space/docs/github-actions-customization/
-
-name: 'Deploy Now: Execute Build'
+name: 'Deploy Lichtspielzeit to IONOS'
 
 on:
-  workflow_call:
-    inputs:
-      site-url:
-        required: true
-        type: string
-      branch-id:
-        required: true
-        type: string
-
-env:
-  DEPLOYMENT_FOLDER: dist
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build-project:
-    name: build lichtspielzeit-astro
+  build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          submodules: 'recursive'
 
-      - name: Debug and Run script
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies and build
         run: |
-          echo "--- Current Directory ---"
-          pwd
-          echo "--- List Files in Current Directory ---"
-          ls -la
-          echo "--- Installing Dependencies ---"
           npm install
-          echo "--- Building Project ---"
           npm run build
 
-
-      - name: Store deployment content
+      - name: Deploy to IONOS
         uses: ionos-deploy-now/artifact-action@v1
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-eu.ionos.space
           project-id: d1b19b77-8fa9-488a-a11c-aec59481b730
-          branch-id: ${{ inputs.branch-id }}
+          branch-id: ${{ github.ref_name }}
           version: ${{ github.sha }}
-          folder: ${{ env.DEPLOYMENT_FOLDER }}
-          config-file: .deploy-now/lichtspielzeit-astro/config.yaml
+          folder: dist
           action: upload
