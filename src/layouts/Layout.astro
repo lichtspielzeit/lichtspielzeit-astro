@@ -1,49 +1,48 @@
 ---
+import Particles from 'astro-particles';
+
 interface Props {
 	title: string;
 }
+
 const { title } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="de">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Lichtspielzeit - Ankommen. Verbinden. Einfach sein." />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-	</head>
-	<body class="bg-amber-50 text-stone-800">
-<div id="particles-js" class="absolute top-0 left-0 w-full h-full z-0"></div>
-
-<main class="relative bg-gray-900 text-gray-300 min-h-screen container mx-auto px-8 py-16 text-center">
-			<slot />
-		</main>
-        <footer class="text-center py-8 text-sm text-stone-500">
-            <a href="/impressum" class="hover:text-stone-800 mx-2">Impressum</a>
-            <a href="/datenschutz" class="hover:text-stone-800 mx-2">Datenschutz</a>
-            <p class="mt-2">© {new Date().getFullYear()} Lichtspielzeit</p>
-        </footer>
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#9ca3af" }, // Wir machen die Partikel jetzt grau für besseren Kontrast
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.4, "random": true },
-        "size": { "value": 2, "random": true },
-        "line_linked": { "enable": false },
-        "move": { "enable": true, "speed": 0.5, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
-      },
-      "retina_detect": true
-    });
-  });
-</script>
-	</body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Lichtspielzeit - Ankommen. Verbinden." />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+</head>
+<body>
+    <main class="relative bg-gray-900 text-gray-300 min-h-screen">
+        <Particles
+            id="tsparticles"
+            options={{
+                "fullScreen": {
+                    "enable": true,
+                    "zIndex": 0
+                },
+                "particles": {
+                    "number": { "value": 50 },
+                    "color": { "value": "#9ca3af" },
+                    "opacity": { "value": 0.4, "random": true },
+                    "size": { "value": 2, "random": true },
+                    "move": {
+                        "enable": true,
+                        "speed": 0.5,
+                        "direction": "none",
+                        "outModes": "out"
+                    }
+                }
+            }}
+        />
+        <div class="relative z-10">
+            <slot />
+        </div>
+    </main>
+</body>
 </html>
