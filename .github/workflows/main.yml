@@ -10,10 +10,6 @@ jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
-    
-    defaults:
-      run:
-        working-directory: ./lichtspielzeit-astro/lichtspielzeit-astro
 
     steps:
       - name: Checkout code
