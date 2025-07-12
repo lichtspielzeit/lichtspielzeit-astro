@@ -13,7 +13,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./lichtspielzeit-astro
+        working-directory: ./lichtspielzeit-astro/lichtspielzeit-astro
 
     steps:
       - name: Checkout code
