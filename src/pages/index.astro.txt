@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Lichtspielzeit - Willkommen zuhause">
+	<h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">Du bist da.</h1>
+	<h2 class="text-4xl md:text-6xl mb-8">Atme durch.</h2>
+	<p class="max-w-2xl mx-auto text-lg md:text-xl leading-relaxed mb-12">
+		Hier, in diesem Raum, musst du nichts leisten. Nicht perfekt sein. Nicht funktionieren.<br>
+		Hier darfst du einfach sein. Mit allem, was du gerade mitbringst.<br>
+		Lichtspielzeit ist eine liebevolle Einladung an dich, die kleinen, magischen Momente im Alltag wiederzuentdecken – für mehr Verbindung zu dir selbst und zu deiner Familie.
+		<br><br>
+		Willkommen zuhause.
+	</p>
+	<div class="bg-white/50 max-w-lg mx-auto p-8 rounded-lg shadow-sm border border-amber-200/50">
+		<h3 class="text-2xl font-bold mb-2">Ein kleiner Lichtblick für dich</h3>
+		<p class="mb-6">
+			Möchtest du eine Prise Alltagsmagie direkt in dein Postfach? Meine "7 Impulse für mehr Herzzeit" warten auf dich. Ein kleines Geschenk, von Herz zu Herz.
+		</p>
+		<form name="freebie-anmeldung" method="POST" action="/danke" data-netlify="true" netlify-honeypot="bot-field" class="text-left">
+			<input type="hidden" name="form-name" value="freebie-anmeldung" />
+			<p class="hidden"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
+			<input type="email" name="email" placeholder="Deine E-Mail-Adresse" required class="w-full px-4 py-3 border border-amber-300 rounded-md focus:ring-2 focus:ring-amber-400 focus:outline-none mb-4">
+			<div class="mb-4 text-xs text-stone-500"><label class="flex items-start">
+					<input type="checkbox" name="datenschutz" required class="mr-2 mt-1 flex-shrink-0">
+					<span>Ja, ich möchte das Freebie erhalten und stimme zu, dass meine E-Mail-Adresse für den Versand von weiteren liebevollen Impulsen und Informationen von Lichtspielzeit verwendet wird. Ich habe die <a href="/datenschutz" class="underline">Datenschutzerklärung</a> gelesen und kann meine Einwilligung jederzeit widerrufen.</span>
+			</label></div>
+			<button type="submit" class="w-full bg-stone-800 text-white py-3 rounded-md hover:bg-stone-700 transition-colors font-bold">
+				Ja, ich möchte Post von dir
+			</button>
+		</form>
+	</div>
+</Layout>

@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Danke! - Lichtspielzeit">
+	<h1 class="text-5xl font-bold mb-4">Danke für dein Vertrauen!</h1>
+	<p class="max-w-xl mx-auto text-xl leading-relaxed">
+		Eine E-Mail mit deinem kleinen Lichtblick ist bereits auf dem Weg zu dir.
+		<br><br>
+		Bitte schau auch in deinem Spam-Ordner nach, falls du sie nicht gleich findest.
+	</p>
+</Layout>

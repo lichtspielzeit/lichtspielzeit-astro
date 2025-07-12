@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Datenschutz - Lichtspielzeit">
+    <div class="prose max-w-4xl text-left mx-auto">
+	    <h1 class="text-4xl font-bold mb-4">Datenschutzerklärung</h1>
+	    <p>
+            Hier kommt der vollständige Text aus dem Datenschutz-Generator hinein.
+        </p>
+    </div>
+</Layout>
