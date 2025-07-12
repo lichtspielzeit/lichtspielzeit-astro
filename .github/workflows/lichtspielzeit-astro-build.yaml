@@ -26,10 +26,17 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Run script
+      - name: Debug and Run script
         run: |
+          echo "--- Current Directory ---"
+          pwd
+          echo "--- List Files in Current Directory ---"
+          ls -la
+          echo "--- Installing Dependencies ---"
           npm install
+          echo "--- Building Project ---"
           npm run build
+
 
       - name: Store deployment content
         uses: ionos-deploy-now/artifact-action@v1
