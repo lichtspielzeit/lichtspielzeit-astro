@@ -12,19 +12,12 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
-		<style is:global>
-    body {
-        font-family: 'Lora', serif;
-        background-color: #111827; /* Dunkler Hintergrund */
-        color: #d1d5db; /* Heller Text */
-    }
-</style>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 	</head>
 	<body class="bg-amber-50 text-stone-800">
 <div id="particles-js" class="absolute inset-0 -z-10"></div>
 
-		<main class="container mx-auto px-8 py-16 text-center">
+<main class="bg-gray-900 text-gray-300 min-h-screen container mx-auto px-8 py-16 text-center">
 			<slot />
 		</main>
         <footer class="text-center py-8 text-sm text-stone-500">
@@ -37,7 +30,7 @@ const { title } = Astro.props;
     particlesJS("particles-js", {
       "particles": {
         "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#ffffff" }, // Wir machen die Partikel jetzt weiß für besseren Kontrast
+        "color": { "value": "#9ca3af" }, // Wir machen die Partikel jetzt grau für besseren Kontrast
         "shape": { "type": "circle" },
         "opacity": { "value": 0.4, "random": true },
         "size": { "value": 2, "random": true },
