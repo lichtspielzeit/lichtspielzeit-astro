@@ -17,8 +17,11 @@ const { title } = Astro.props;
 			@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap' );
 			body { font-family: 'Lora', serif; }
 		</style>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 	</head>
 	<body class="bg-amber-50 text-stone-800">
+<div id="particles-js" class="absolute inset-0 -z-10"></div>
+
 		<main class="container mx-auto px-8 py-16 text-center">
 			<slot />
 		</main>
@@ -27,5 +30,57 @@ const { title } = Astro.props;
             <a href="/datenschutz" class="hover:text-stone-800 mx-2">Datenschutz</a>
             <p class="mt-2">© {new Date().getFullYear()} Lichtspielzeit</p>
         </footer>
+<script is:inline>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": {
+        "value": 50,
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": {
+        "value": "#d1d5db" // Ein sanftes Grau, passend zum Text
+      },
+      "shape": {
+        "type": "circle",
+      },
+      "opacity": {
+        "value": 0.4,
+        "random": true,
+      },
+      "size": {
+        "value": 2,
+        "random": true,
+      },
+      "line_linked": {
+        "enable": false, // Keine Verbindungslinien
+      },
+      "move": {
+        "enable": true,
+        "speed": 0.5, // Sehr langsam
+        "direction": "none",
+        "random": true,
+        "straight": false,
+        "out_mode": "out",
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": false, // Keine Reaktion bei Mausbewegung
+        },
+        "onclick": {
+          "enable": false,
+        },
+        "resize": true
+      }
+    },
+    "retina_detect": true
+  });
+</script>
+
 	</body>
 </html>
