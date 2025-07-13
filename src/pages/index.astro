@@ -1,12 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+// WIR IMPORTIEREN DAS BILD HIER DIREKT
+import heroImage from '../../public/hero-image.jpg'; 
 ---
 
 <Layout title="Lichtspielzeit - Willkommen">
     <!-- Container für das Hintergrundbild -->
     <div class="fixed top-0 left-0 w-full h-full -z-10">
-        <img src="/public/hero-image.jpg" alt="Ein liebevoller, authentischer Moment" class="w-full h-full object-cover animate-slow-zoom">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div> <!-- Dunkler Schleier für Lesbarkeit -->
+        {/* WIR NUTZEN DIE IMPORTIERTE BILDQUELLE */}
+        <img src={heroImage.src} alt="Ein liebevoller, authentischer Moment" class="w-full h-full object-cover animate-slow-zoom">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     </div>
 
     <div class="min-h-screen flex flex-col items-center justify-center text-center p-4 font-serif text-white">
@@ -26,7 +29,7 @@ import Layout from '../layouts/Layout.astro';
                 </p>
                 <p class="mt-4">
                     Lichtspielzeit ist eine liebevolle Einladung an dich, die kleinen, magischen Momente im Alltag wiederzuentdecken – für mehr Verbindung zu dir selbst und zu deiner Familie.
-                </p>
+                p>
                 <p class="mt-6 font-semibold">Willkommen zuhause.</p>
             </div>
 
