@@ -2,19 +2,31 @@
 interface Props {
   title: string;
 }
+
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Lichtspielzeit - Ankommen. Verbinden." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen font-serif text-white">
+  <body>
     <slot />
   </body>
 </html>
+
+<style is:global>
+  /* 
+    Hier können globale Stile platziert werden.
+    Tailwind's Basis-Stile werden automatisch durch die Integration angewendet.
+  */
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+</style>

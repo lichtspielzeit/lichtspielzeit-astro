@@ -1,56 +1,66 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import heroImage from '../assets/hero-image.jpg';
+import { Image } from 'astro:assets';
 ---
 
-<Layout title="Lichtspielzeit - Willkommen">
-  <div class="relative min-h-screen grid grid-rows-[1fr_auto] overflow-hidden">
-    <img
-      src={heroImage.src}
-      alt="Ein liebevoller, authentischer Moment"
-      class="absolute inset-0 w-full h-full object-cover -z-20"
+<Layout title="Hero Landing Page">
+  <div class="page-wrapper">
+    <!-- Hintergrundbild -->
+    <Image 
+      src={heroImage} 
+      alt="Hero Hintergrundbild" 
+      class="background-image"
     />
-    <div class="absolute inset-0 bg-black/50 -z-10"></div>
 
-    <main class="grid place-items-center p-6">
-      <div class="bg-gray-800/70 backdrop-blur-md p-8 rounded-2xl max-w-md w-full border border-gray-700 shadow-2xl">
-        <h3 class="text-2xl font-bold mb-2">Ein kleiner Lichtblick für dich</h3>
-        <p class="text-gray-300 mb-6">
-          Möchtest du eine Prise Alltagsmagie direkt in dein Postfach? Meine
-          "7 Impulse für mehr Herzzeit" warten auf dich. Ein kleines Geschenk,
-          von Herz zu Herz.
-        </p>
-        <form action="DEIN_BREVO_LINK" method="POST" class="flex flex-col">
-          <input
-            type="email"
-            name="EMAIL"
-            required
-            placeholder="Deine E-Mail-Adresse"
-            class="bg-gray-700 text-white placeholder-gray-400 rounded-md p-3 mb-4 border border-gray-600 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-          />
-          <div class="text-xs text-left text-gray-400 mb-4">
-            <input type="checkbox" id="consent" name="CONSENT" required class="mr-2" />
-            <label for="consent">
-              Ja, ich möchte das Freebie erhalten und stimme zu,
-              dass meine E-Mail-Adresse für den Versand von weiteren liebevollen
-              Impulsen und Informationen von Lichtspielzeit verwendet wird.
-              Ich habe die Datenschutzbestimmungen gelesen und verstanden.
-            </label>
-          </div>
-          <button
-            type="submit"
-            class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 rounded-md transition-colors duration-300"
-          >
-            Ja, ich möchte Post von dir
-          </button>
-        </form>
+    <!-- Vordergrund-Inhalt -->
+    <main class="main-content">
+      <div class="text-center text-white">
+        <h1 class="text-5xl font-bold mb-4">Ihre Überschrift hier</h1>
+        <p class="text-xl">Ein kurzer, prägnanter Untertitel.</p>
       </div>
     </main>
 
-    <footer class="flex items-center justify-center gap-4 p-4 text-gray-300 text-sm">
-      <a href="/impressum" class="hover:text-white transition-colors">Impressum</a>
-      <span>|</span>
-      <a href="/datenschutz" class="hover:text-white transition-colors">Datenschutz</a>
+    <!-- Footer -->
+    <footer class="footer">
+      <a href="/impressum" class="hover:underline">Impressum</a>
+      <a href="/datenschutz" class="hover:underline">Datenschutz</a>
     </footer>
   </div>
 </Layout>
+
+<style>
+  .page-wrapper {
+    display: grid;
+    grid-template-rows: 1fr auto; /* Hauptinhalt wächst, Footer bleibt unten */
+    height: 100vh; /* Füllt die gesamte Bildschirmhöhe */
+    position: relative; /* Wichtig für die Positionierung des Hintergrundbildes */
+    isolation: isolate; /* Erstellt einen neuen Stacking-Kontext */
+  }
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Deckt den gesamten Bereich ab, ohne das Seitenverhältnis zu verzerren */
+    z-index: -1; /* Legt das Bild hinter den Inhalt */
+    filter: brightness(0.6); /* Dunkelt das Bild ab, um den Text lesbarer zu machen */
+  }
+
+  .main-content {
+    display: grid;
+    place-items: center; /* Zentriert den Inhalt horizontal und vertikal */
+    padding: 1rem;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    color: white;
+    font-size: 0.875rem;
+  }
+</style>
