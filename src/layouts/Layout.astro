@@ -19,5 +19,15 @@ const { title } = Astro.props;
     <main>
         <slot />
     </main>
+<style is:global>
+    @keyframes slow-zoom {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.1); }
+    }
+    .animate-slow-zoom {
+        animation: slow-zoom 25s ease-in-out infinite alternate;
+    }
+</style>
+
 </body>
 </html>
