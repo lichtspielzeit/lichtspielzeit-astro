@@ -1,34 +1,20 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
-
 const { title } = Astro.props;
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Lichtspielzeit - Ankommen. Verbinden." />
+  <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Lichtspielzeit - Ankommen. Verbinden." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    
-    <!-- Dieser Style-Block bleibt hier, um unsere Absicht für die Zukunft zu dokumentieren -->
-    <style is:global>
-        @keyframes slow-zoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-        .animate-slow-zoom {
-            animation: slow-zoom 25s ease-in-out infinite alternate;
-        }
-    </style>
-</head>
-<body>
-    <main>
-        <slot />
-    </main>
-</body>
+  </head>
+  <body class="min-h-screen font-serif text-white">
+    <slot />
+  </body>
 </html>

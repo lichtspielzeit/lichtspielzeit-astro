@@ -1,47 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import heroImage from '../assets/hero-image.jpg'; 
+import heroImage from '../assets/hero-image.jpg';
 ---
 
 <Layout title="Lichtspielzeit - Willkommen">
-    <!-- Container für das Hintergrundbild -->
-    <div class="fixed top-0 left-0 w-full h-full -z-10">
-        <img src={heroImage.src} alt="Ein liebevoller, authentischer Moment" class="w-full h-full object-cover object-center">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-    </div>
+  <div class="relative min-h-screen grid grid-rows-[1fr_auto] overflow-hidden">
+    <img
+      src={heroImage.src}
+      alt="Ein liebevoller, authentischer Moment"
+      class="absolute inset-0 w-full h-full object-cover -z-20"
+    />
+    <div class="absolute inset-0 bg-black/50 -z-10"></div>
 
-    <!-- Der neue, intelligente Flexbox-Container -->
-    <div class="min-h-screen flex flex-col text-center p-4 font-serif text-white">
-        
-        <!-- Dieser Container wächst und drückt den Footer nach unten -->
-        <div class="flex-grow flex flex-col items-center justify-center">
-            <!-- ... (Hier steht der ganze Text und das Formular, der Code bleibt derselbe) ... -->
-            <div class="relative z-10">
-                <div class="bg-gray-800 bg-opacity-50 backdrop-blur-md p-8 rounded-2xl max-w-md w-full border border-gray-700 shadow-2xl">
-                    <h3 class="text-2xl font-bold mb-2">Ein kleiner Lichtblick für dich</h3>
-                    <p class="text-gray-300 mb-6">Möchtest du eine Prise Alltagsmagie direkt in dein Postfach? Meine "7 Impulse für mehr Herzzeit" warten auf dich. Ein kleines Geschenk, von Herz zu Herz.</p>
-                    
-                    <form action="DEIN_BREVO_LINK" method="POST" class="flex flex-col">
-                        <input type="email" name="EMAIL" required class="bg-gray-700 text-white placeholder-gray-400 rounded-md p-3 mb-4 border border-gray-600 focus:ring-2 focus:ring-amber-400 focus:outline-none" placeholder="Deine E-Mail-Adresse">
-                        <div class="text-xs text-left text-gray-400 mb-4">
-                            <input type="checkbox" id="consent" name="CONSENT" required class="mr-2">
-                            <label for="consent">Ja, ich möchte das Freebie erhalten und stimme zu, dass meine E-Mail-Adresse für den Versand von weiteren liebevollen Impulsen und Informationen von Lichtspielzeit verwendet wird. Ich habe die Datenschutzbestimmungen gelesen und verstanden.</label>
-                        </div>
-                        <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 rounded-md transition-colors duration-300">
-                            Ja, ich möchte Post von dir
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <main class="grid place-items-center p-6">
+      <div class="bg-gray-800/70 backdrop-blur-md p-8 rounded-2xl max-w-md w-full border border-gray-700 shadow-2xl">
+        <h3 class="text-2xl font-bold mb-2">Ein kleiner Lichtblick für dich</h3>
+        <p class="text-gray-300 mb-6">
+          Möchtest du eine Prise Alltagsmagie direkt in dein Postfach? Meine
+          "7 Impulse für mehr Herzzeit" warten auf dich. Ein kleines Geschenk,
+          von Herz zu Herz.
+        </p>
+        <form action="DEIN_BREVO_LINK" method="POST" class="flex flex-col">
+          <input
+            type="email"
+            name="EMAIL"
+            required
+            placeholder="Deine E-Mail-Adresse"
+            class="bg-gray-700 text-white placeholder-gray-400 rounded-md p-3 mb-4 border border-gray-600 focus:ring-2 focus:ring-amber-400 focus:outline-none"
+          />
+          <div class="text-xs text-left text-gray-400 mb-4">
+            <input type="checkbox" id="consent" name="CONSENT" required class="mr-2" />
+            <label for="consent">
+              Ja, ich möchte das Freebie erhalten und stimme zu,
+              dass meine E-Mail-Adresse für den Versand von weiteren liebevollen
+              Impulsen und Informationen von Lichtspielzeit verwendet wird.
+              Ich habe die Datenschutzbestimmungen gelesen und verstanden.
+            </label>
+          </div>
+          <button
+            type="submit"
+            class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 rounded-md transition-colors duration-300"
+          >
+            Ja, ich möchte Post von dir
+          </button>
+        </form>
+      </div>
+    </main>
 
-        <!-- Der Footer ist jetzt einfach das letzte Element, keine absolute Positionierung mehr nötig -->
-        <footer class="w-full p-4 text-center text-gray-400 text-sm z-10">
-            <div class="flex justify-center gap-4">
-                <a href="/impressum" class="hover:text-white transition-colors">Impressum</a>
-                <span>|</span>
-                <a href="/datenschutz" class="hover:text-white transition-colors">Datenschutz</a>
-            </div>
-        </footer>
-    </div>
+    <footer class="flex items-center justify-center gap-4 p-4 text-gray-300 text-sm">
+      <a href="/impressum" class="hover:text-white transition-colors">Impressum</a>
+      <span>|</span>
+      <a href="/datenschutz" class="hover:text-white transition-colors">Datenschutz</a>
+    </footer>
+  </div>
 </Layout>
