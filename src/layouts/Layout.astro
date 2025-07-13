@@ -14,20 +14,30 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    
+    <!-- Dieser Style-Block bleibt hier, um unsere Absicht für die Zukunft zu dokumentieren -->
+    <style is:global>
+        @keyframes slow-zoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .animate-slow-zoom {
+            animation: slow-zoom 25s ease-in-out infinite alternate;
+        }
+    </style>
 </head>
 <body>
     <main>
         <slot />
     </main>
-<style is:global>
-    @keyframes slow-zoom {
-        0% { transform: scale(1); }
-        100% { transform: scale(1.1); }
-    }
-    .animate-slow-zoom {
-        animation: slow-zoom 25s ease-in-out infinite alternate;
-    }
-</style>
 
+    <!-- HIER KOMMT DER NEUE FOOTER HIN -->
+    <footer class="absolute bottom-0 left-0 w-full p-4 text-center text-gray-400 text-sm">
+        <div class="flex justify-center gap-4">
+            <a href="/impressum" class="hover:text-white transition-colors">Impressum</a>
+            <span>|</span>
+            <a href="/datenschutz" class="hover:text-white transition-colors">Datenschutz</a>
+        </div>
+    </footer>
 </body>
 </html>
